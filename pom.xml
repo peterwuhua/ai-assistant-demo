@@ -12,9 +12,13 @@
   <groupId>com.msb</groupId>
   <artifactId>ai-assistant-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <name>ai-assistant-demo</name>
+    <name>ai-assistant-demo</name>
   <url>http://maven.apache.org</url>
+    <modules>
+        <module>SpringAISseServer</module>
+    </modules>
 
     <!-- 导入 Spring AI BOM，用于统一管理 Spring AI 依赖的版本， 引用每个 Spring AI 模块时不用再写 <version>，只要依赖什么模块 Mavens 自动使用 BOM 推荐的版本 -->
     <dependencyManagement>
