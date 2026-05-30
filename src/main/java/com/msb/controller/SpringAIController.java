@@ -2,6 +2,7 @@ package com.msb.controller;
 
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,8 @@ public class SpringAIController {
 
     private final ChatClient chatClient;
 
-    public SpringAIController(ChatModel chatModel) {
-        this.chatClient = ChatClient.builder(chatModel).defaultSystem("你是一个智能聊天助手").build();
+    public SpringAIController(ChatClient chatClient) {
+        this.chatClient = chatClient;
     }
 
 
@@ -28,6 +29,12 @@ public class SpringAIController {
     public String chatWithAI(@RequestParam(value = "message")String message){
         return chatClient.prompt().user(message).call().content();
     }
+
+    @GetMapping("/chatMemory")
+    public String chatMemory(@RequestParam(value = "cid")String cid,@RequestParam(value = "message")String message){
+        return chatClient.prompt().user(message).advisors(a-> a.param(ChatMemory.CONVERSATION_ID,cid)).call().content();
+    }
+
 
 
 }

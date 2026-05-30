@@ -1,1 +1,2 @@
-# ai-assistant-demo
+项目简介： 这是一个AI助手项目，它可以聊天，具有上下文记忆功能，也可以调用具体的工具如：查询天气等
+用到的技术栈：SpringBoot+SpringAI+智普AI
